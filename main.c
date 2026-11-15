@@ -19,7 +19,7 @@ void game1(){
     char Retry;
     system("cls");
     do{
-    printf("Will Have Game 1 code here Making Structure first \n");
+    printf("This will be replaced by Game 1 \n");
     // IM WORKING ON THE STRUCTURE FIRST ONCE THATS DONE ILL MOVE ON TO THE GAME
     do{
     printf("Type R to Retry \n");
@@ -40,7 +40,7 @@ void game2(){
     char Retry;
     system("cls");
     do{
-    printf("Will Have Game 2 code here Making Structure first \n");
+    printf("This will be replaced by Game 2 \n");
     // IM WORKING ON THE STRUCTURE FIRST ONCE THATS DONE ILL MOVE ON TO THE GAME
     do{
     printf("Type R to Retry \n");
@@ -59,7 +59,7 @@ void game3(){
     char Retry;
     system("cls");
     do{
-    printf("Will Have Game 3 code here Making Structure first \n");
+    printf("This will be replaced by Game 3 \n");
     // IM WORKING ON THE STRUCTURE FIRST ONCE THATS DONE ILL MOVE ON TO THE GAME
     do{
     printf("Type R to Retry \n");
@@ -99,7 +99,7 @@ case 4:
     End = 1;
     break;
 default:
-    printf("Invalid Please Choose among the given options \n");
+    system("cls");
     break;
     }
     }
