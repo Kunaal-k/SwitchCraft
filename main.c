@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 void DisplayMenu(){
 printf(" ______________________________\n");
 printf("|         Switch Craft         |\n");
@@ -19,6 +20,7 @@ void game1(){
     char Retry;
     system("cls");
     do{
+    int p1 = 0,p2 = 0,turn = 1,dice;
     printf("This will be replaced by Game 1 \n");
     // IM WORKING ON THE STRUCTURE FIRST ONCE THATS DONE ILL MOVE ON TO THE GAME
     do{
@@ -37,6 +39,7 @@ void game1(){
 }
 void game2(){
     int Choice,End = 0;
+    int p1 = 0,p2 = 0;
     char Retry;
     system("cls");
     do{
@@ -49,13 +52,16 @@ void game2(){
     if(Retry == 'E'){
         break;
     }
+    system("cls");
     }
     while(Retry != 'E' && Retry != 'R');
+    system("cls");
     }
     while (Retry == 'R');
 }
 void game3(){
     int Choice,End = 0;
+    int p1 = 0,p2 = 0;
     char Retry;
     system("cls");
     do{
@@ -68,14 +74,17 @@ void game3(){
     if(Retry == 'E'){
         break;
     }
+    system("cls");
     }
     while(Retry != 'E' && Retry != 'R');
+    system("cls");
     }
     while (Retry == 'R');
 }
 
 int main()
 {
+    srand(time(NULL));
     int Choice,End = 0;
     char Retry;
     do{
