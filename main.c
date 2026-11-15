@@ -14,16 +14,10 @@ printf("|_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=|\n");
 printf("\n");
 printf("Pick An Option: ");
 }
-
-int main()
-{
+void game1(){
     int Choice,End = 0;
     char Retry;
-    do{
-    DisplayMenu();
-    scanf("%d",&Choice);
-    switch(Choice){
-case 1:
+    system("cls");
     do{
     printf("Will Have Game 1 code here Making Structure first \n");
     // IM WORKING ON THE STRUCTURE FIRST ONCE THATS DONE ILL MOVE ON TO THE GAME
@@ -34,12 +28,17 @@ case 1:
     if(Retry == 'E'){
         break;
     }
+    system("cls");
     }
     while(Retry != 'E' && Retry != 'R');
+    system("cls");
     }
     while (Retry == 'R');
-    break;
-case 2:
+}
+void game2(){
+    int Choice,End = 0;
+    char Retry;
+    system("cls");
     do{
     printf("Will Have Game 2 code here Making Structure first \n");
     // IM WORKING ON THE STRUCTURE FIRST ONCE THATS DONE ILL MOVE ON TO THE GAME
@@ -54,8 +53,11 @@ case 2:
     while(Retry != 'E' && Retry != 'R');
     }
     while (Retry == 'R');
-    break;
-case 3:
+}
+void game3(){
+    int Choice,End = 0;
+    char Retry;
+    system("cls");
     do{
     printf("Will Have Game 3 code here Making Structure first \n");
     // IM WORKING ON THE STRUCTURE FIRST ONCE THATS DONE ILL MOVE ON TO THE GAME
@@ -70,6 +72,27 @@ case 3:
     while(Retry != 'E' && Retry != 'R');
     }
     while (Retry == 'R');
+}
+
+int main()
+{
+    int Choice,End = 0;
+    char Retry;
+    do{
+    DisplayMenu();
+    scanf("%d",&Choice);
+    switch(Choice){
+case 1:
+    game1();
+    system("cls");
+    break;
+case 2:
+    game2();
+    system("cls");
+    break;
+case 3:
+    game3();
+    system("cls");
     break;
 case 4:
     printf("Exiting");
