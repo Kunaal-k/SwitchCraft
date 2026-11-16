@@ -29,45 +29,57 @@ for (int row = 9; row >= 0; row--) {
     printf("+\033[0m\n");
     for (int col = 0; col < 10; col++) {
         int sq = (row * 10) + col + 1;
+        int isLadder = (sq == 4 || sq == 9 || sq == 21 || sq == 28 || sq == 51 || sq == 71);
+        int isSnake  = (sq == 17 || sq == 54 || sq == 62 || sq == 64 || sq == 87 || sq == 98);
 
+        printf("\033[107;30m|");
+        if (isLadder)      printf("\033[102;30m");
+        else if (isSnake)  printf("\033[101;30m");
+        else               printf("\033[107;30m");
         if (sq == p1 && sq == p2) {
-            printf("\033[107;30m|\033[107;1;35m 1&2  ");
+            printf("\033[1;35m 1&2  ");
         } else if (sq == p1) {
-            printf("\033[107;30m|\033[107;1;34m  P1  ");
+            printf("\033[1;34m  P1  ");
         } else if (sq == p2) {
-            printf("\033[107;30m|\033[107;1;31m  P2  ");
+            printf("\033[1;36m  P2  ");
         } else if (sq == 4) {
-            printf("\033[107;30m|\033[107;32m L->14");
+            printf(" L->14");
         } else if (sq == 9) {
-            printf("\033[107;30m|\033[107;32m L->31");
+            printf(" L->31");
         } else if (sq == 21) {
-            printf("\033[107;30m|\033[107;32m L->42");
+            printf(" L->42");
         } else if (sq == 28) {
-            printf("\033[107;30m|\033[107;32m L->84");
+            printf(" L->84");
         } else if (sq == 51) {
-            printf("\033[107;30m|\033[107;32m L->67");
+            printf(" L->67");
         } else if (sq == 71) {
-            printf("\033[107;30m|\033[107;32m L->91");
+            printf(" L->91");
         } else if (sq == 17) {
-            printf("\033[107;30m|\033[107;31m S->7 ");
+            printf(" S->7 ");
         } else if (sq == 54) {
-            printf("\033[107;30m|\033[107;31m S->34");
+            printf(" S->34");
         } else if (sq == 62) {
-            printf("\033[107;30m|\033[107;31m S->19");
+            printf(" S->19");
         } else if (sq == 64) {
-            printf("\033[107;30m|\033[107;31m S->60");
+            printf(" S->60");
         } else if (sq == 87) {
-            printf("\033[107;30m|\033[107;31m S->24");
+            printf(" S->24");
         } else if (sq == 98) {
-            printf("\033[107;30m|\033[107;31m S->79");
+            printf(" S->79");
         } else {
-            printf("\033[107;30m|      ");
+            printf("      ");
         }
     }
     printf("\033[107;30m|\033[0m\n");
     for (int col = 0; col < 10; col++) {
         int sq = (row * 10) + col + 1;
-        printf("\033[107;30m|%-6d", sq);
+        int isLadder = (sq == 4 || sq == 9 || sq == 21 || sq == 28 || sq == 51 || sq == 71);
+        int isSnake  = (sq == 17 || sq == 54 || sq == 62 || sq == 64 || sq == 87 || sq == 98);
+
+        printf("\033[107;30m|");
+        if (isLadder)      printf("\033[102;30m%-6d", sq);
+        else if (isSnake)  printf("\033[101;30m%-6d", sq);
+        else               printf("\033[107;30m%-6d", sq);
     }
     printf("\033[107;30m|\033[0m\n");
 }
