@@ -261,27 +261,70 @@ void game2() {
         system("cls");
     } while (Retry == 'R');
 }
-void game3(){
-    int Choice,End = 0;
-    int p1 = 0,p2 = 0;
+void game3() {
     char Retry;
     system("cls");
-    do{
-    printf("This will be replaced by Game 3 \n");
-    // IM WORKING ON THE STRUCTURE FIRST ONCE THATS DONE ILL MOVE ON TO THE GAME
-    do{
-    printf("Type R to Retry \n");
-    printf("Type E to Go back to Menu \n");
-    scanf(" %c",&Retry);
-    if(Retry == 'E'){
-        break;
-    }
-    system("cls");
-    }
-    while(Retry != 'E' && Retry != 'R');
-    system("cls");
-    }
-    while (Retry == 'R');
+    do {
+        int diff, maxRange = 100, maxAttempts = 7;
+        int secret, guess, attempts = 0, won = 0, score = 0;
+        printf("=== GUESS THE NUMBER ===\n\n");
+        printf("1. Easy   (1 - 50,  10 tries)\n");
+        printf("2. Medium (1 - 100, 7 tries)\n");
+        printf("3. Hard   (1 - 200, 5 tries)\n\n");
+        printf("Choose Difficulty (1-3): ");
+        scanf("%d", &diff);
+
+        switch (diff) {
+            case 1:
+                maxRange = 50;
+                maxAttempts = 10;
+                break;
+            case 3:
+                maxRange = 200;
+                maxAttempts = 5;
+                break;
+            default:
+                diff = 2;
+                maxRange = 100;
+                maxAttempts = 7;
+                break;
+        }
+        secret = (rand() % maxRange) + 1;
+        system("cls");
+        printf("I picked a number between 1 and %d!\n", maxRange);
+        printf("You have %d attempts.\n\n", maxAttempts);
+        while (attempts < maxAttempts) {
+            printf("Attempt %d/%d - Enter your guess: ", attempts + 1, maxAttempts);
+            scanf("%d", &guess);
+            attempts++;
+
+            if (guess == secret) {
+                won = 1;
+                break;
+            } else if (guess < secret) {
+                printf("Too low! Try a HIGHER number.\n\n");
+            } else {
+                printf("Too high! Try a LOWER number.\n\n");
+            }
+        }
+        if (won == 1) {
+            score = (maxAttempts - attempts + 1) * 10 * diff;
+            printf("\nYou got it! The number was %d.\n", secret);
+            printf("Attempts used: %d | Score: %d\n\n", attempts, score);
+        } else {
+            printf("\nOut of attempts! The secret number was %d.\n\n", secret);
+        }
+        do {
+            printf("Type R to Retry \n");
+            printf("Type E to Go back to Menu \n");
+            scanf(" %c", &Retry);
+            if (Retry == 'E') {
+                break;
+            }
+            system("cls");
+        } while (Retry != 'E' && Retry != 'R');
+        system("cls");
+    } while (Retry == 'R');
 }
 
 int main()
