@@ -1,20 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-void DisplayMenu(){
-printf(" ______________________________\n");
-printf("|         Switch Craft         |\n");
-printf("|------------------------------|\n");
-printf("| / / / Choose Your Game / / / |\n");
-printf("|------------------------------|\n");
-printf("| 1 | Snakes and Ladder        |\n");
-printf("| 2 | Tic Tac Toe              |\n");
-printf("| 3 | Guess The Number         |\n");
-printf("| 4 | Exit Menu                |\n");
-printf("|_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=|\n");
-printf("\n");
-printf("Pick An Option: ");
+void DisplayMenu() {
+    printf("\n\n\n");
+    printf("                                                            ______________________________\n");
+    printf("                                                           |         Switch Craft         |\n");
+    printf("                                                           |------------------------------|\n");
+    printf("                                                           | / / / Choose Your Game / / / |\n");
+    printf("                                                           |------------------------------|\n");
+    printf("                                                           | 1 | Snakes and Ladder        |\n");
+    printf("                                                           | 2 | Tic Tac Toe              |\n");
+    printf("                                                           | 3 | Guess The Number         |\n");
+    printf("                                                           | 4 | Exit Menu                |\n");
+    printf("                                                           |_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=|\n\n");
+    printf("                                           Pick An Option: ");
 }
+
 void game1() {
     char Retry;
     system("cls");
@@ -22,11 +23,14 @@ void game1() {
         int p1 = 1, p2 = 1, turn = 1, dice;
         getchar();
     do{
+            printf("                                             Snakes and Ladder\n");
 for (int row = 9; row >= 0; row--) {
+        printf("                                             ");
     for (int col = 0; col < 10; col++) {
         printf("\033[107;30m+------");
     }
     printf("+\033[0m\n");
+    printf("                                             ");
     for (int col = 0; col < 10; col++) {
         int sq = (row * 10) + col + 1;
         int isLadder = (sq == 4 || sq == 9 || sq == 21 || sq == 28 || sq == 51 || sq == 71);
@@ -71,6 +75,7 @@ for (int row = 9; row >= 0; row--) {
         }
     }
     printf("\033[107;30m|\033[0m\n");
+    printf("                                             ");
     for (int col = 0; col < 10; col++) {
         int sq = (row * 10) + col + 1;
         int isLadder = (sq == 4 || sq == 9 || sq == 21 || sq == 28 || sq == 51 || sq == 71);
@@ -83,6 +88,7 @@ for (int row = 9; row >= 0; row--) {
     }
     printf("\033[107;30m|\033[0m\n");
 }
+printf("                                             ");
 for (int col = 0; col < 10; col++) {
     printf("\033[107;30m+------");
 }
@@ -160,27 +166,100 @@ else if (turn == 2){
     while (Retry == 'R');
 }
 
-void game2(){
-    int Choice,End = 0;
-    int p1 = 0,p2 = 0;
+void game2() {
     char Retry;
     system("cls");
-    do{
-    printf("This will be replaced by Game 2 \n");
-    // IM WORKING ON THE STRUCTURE FIRST ONCE THATS DONE ILL MOVE ON TO THE GAME
-    do{
-    printf("Type R to Retry \n");
-    printf("Type E to Go back to Menu \n");
-    scanf(" %c",&Retry);
-    if(Retry == 'E'){
-        break;
-    }
-    system("cls");
-    }
-    while(Retry != 'E' && Retry != 'R');
-    system("cls");
-    }
-    while (Retry == 'R');
+    do {
+        char board[3][3] = {
+            {'1', '2', '3'},
+            {'4', '5', '6'},
+            {'7', '8', '9'}
+        };
+        int turn = 1, moves = 0, win = 0, box;
+
+        do {
+            system("cls");
+            printf("\n\n");
+            printf("                                             === TIC TAC TOE ===\n\n");
+            for (int row = 0; row < 3; row++) {
+                printf("                                             +---+---+---+\n");
+                printf("                                             ");
+                for (int col = 0; col < 3; col++) {
+                    char mark = board[row][col];
+                    if (mark == 'X') {
+                        printf("|\033[1;34m X \033[0m"); // Bold Blue X
+                    } else if (mark == 'O') {
+                        printf("|\033[1;31m O \033[0m"); // Bold Red O
+                    } else {
+                        printf("| %c ", mark);
+                    }
+                }
+                printf("|\n");
+            }
+            printf("                                             +---+---+---+\n\n");
+            if (win == 1 || moves == 9) {
+                break;
+            }
+            if (turn == 1) {
+                printf("                                             Player 1 (X), choose box (1-9): ");
+            } else {
+                printf("                                             Player 2 (O), choose box (1-9): ");
+            }
+            if (scanf("%d", &box) != 1) {
+                while (getchar() != '\n');
+                printf("                                             Invalid input! Press Enter...");
+                getchar();
+                continue;
+            }
+            int r = (box - 1) / 3;
+            int c = (box - 1) % 3;
+
+            if (box >= 1 && box <= 9 && board[r][c] != 'X' && board[r][c] != 'O') {
+                board[r][c] = (turn == 1) ? 'X' : 'O';
+                moves++;
+                for (int i = 0; i < 3; i++) {
+                    if (board[i][0] == board[i][1] && board[i][1] == board[i][2]) win = 1;
+                    if (board[0][i] == board[1][i] && board[1][i] == board[2][i]) win = 1;
+                }
+                if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) win = 1;
+                if (board[0][2] == board[1][1] && board[1][1] == board[2][0]) win = 1;
+                if (win == 0) {
+                    if (turn == 1) {
+                        turn = 2;
+                    }
+                    else {
+                    turn = 1;
+                    }
+                }
+            } else {
+                while (getchar() != '\n');
+                printf("                                             Box taken or out of range! Press Enter...");
+                getchar();
+            }
+
+        } while (1);
+        if (win == 1) {
+            if (turn == 1) {
+                printf("                                             \033[1;34mPlayer 1 (X) Wins!\033[0m\n\n");
+            } else {
+                printf("                                             \033[1;31mPlayer 2 (O) Wins!\033[0m\n\n");
+            }
+        } else {
+            printf("                                             \033[1;33mIt's a Draw!\033[0m\n\n");
+        }
+
+        do {
+            printf("                                             Type R to Retry \n");
+            printf("                                             Type E to Go back to Menu \n");
+            printf("                                             Choice: ");
+            scanf(" %c", &Retry);
+            if (Retry == 'E') {
+                break;
+            }
+            system("cls");
+        } while (Retry != 'E' && Retry != 'R');
+        system("cls");
+    } while (Retry == 'R');
 }
 void game3(){
     int Choice,End = 0;
