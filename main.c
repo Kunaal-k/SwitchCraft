@@ -177,7 +177,7 @@ void game2() {
         };
         int turn = 1, moves = 0, win = 0, box;
 
-        do {
+        do{
             system("cls");
             printf("\n\n");
             printf("                                             === TIC TAC TOE ===\n\n");
@@ -187,9 +187,9 @@ void game2() {
                 for (int col = 0; col < 3; col++) {
                     char mark = board[row][col];
                     if (mark == 'X') {
-                        printf("|\033[1;34m X \033[0m"); // Bold Blue X
+                        printf("|\033[1;34m X \033[0m");
                     } else if (mark == 'O') {
-                        printf("|\033[1;31m O \033[0m"); // Bold Red O
+                        printf("|\033[1;31m O \033[0m");
                     } else {
                         printf("| %c ", mark);
                     }
